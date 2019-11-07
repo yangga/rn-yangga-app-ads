@@ -11,7 +11,7 @@ const FakeDatabase = {
             },
             desc: {
                 en: 'IDScanner for scanned ID image',
-                ko: '스캔한 신분증 이미지 필요할땐 신분증스캐너 뽄뽄!',
+                ko: '신분증 스캔이 필요할 땐 신분증스캐너 뽄뽄!',
             },
             store: {
                 aos: 'https://play.google.com/store/apps/details?id=com.yangga.idresizer',
