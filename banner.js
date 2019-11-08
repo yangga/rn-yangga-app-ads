@@ -18,6 +18,38 @@ const FakeDatabase = {
                 ios: 'https://apps.apple.com/app/id961606275',
             },
             icon: require('./icons/idscanner.png')
+        },
+        {
+            id: 'dust',
+            name: {
+                en: 'Dust Checker',
+                ko: '미세먼지 놉!',
+            },
+            desc: {
+                en: 'Dust Checker',
+                ko: '해외사이트로 미세먼지 체크를',
+            },
+            store: {
+                aos: 'https://play.google.com/store/apps/details?id=com.dusclient',
+                ios: 'https://apps.apple.com/app/id1236553661',
+            },
+            icon: require('./icons/dust.png')
+        },
+        {
+            id: 'mokick',
+            name: {
+                en: 'Mokick',
+                ko: '모두의 킥보드 모킥!',
+            },
+            desc: {
+                en: 'Searching e-scooters around us',
+                ko: '주변 모든 킥보드를 한번에 찾자',
+            },
+            store: {
+                aos: 'https://play.google.com/store/apps/details?id=com.yangga.mokick',
+                ios: 'https://apps.apple.com/app/id1484022513',
+            },
+            icon: require('./icons/mokick.png')
         }
     ]
 }
@@ -34,10 +66,37 @@ export default class Banner extends React.PureComponent {
         store: 'https://play.google.com/store/apps/details?id=com.yangga.idresizer',
         icon: null,
     }
+
+    mounted = false
+    intervalRotation = null
+    currentIdx = 0
     
 
     async componentDidMount() {
-        const app = FakeDatabase.apps[0]
+        this.mounted = true
+
+        const idx = parseInt(new Date().getTime()) % FakeDatabase.apps.length
+        this.changeIndex(idx)
+
+        this.intervalRotation = setInterval(() => this.changeIndex(this.currentIdx + 1), 1000*10)
+    }
+
+    componentWillUnmount() {
+        this.mounted = false
+
+        if (this.intervalRotation) {
+            clearInterval(this.intervalRotation)
+        }
+    }
+
+    changeIndex = (idx) => {
+        if (!this.mounted) return
+
+        const newIdx = idx % FakeDatabase.apps.length
+
+        const app = FakeDatabase.apps[newIdx]
+
+        this.currentIdx = newIdx
 
         this.setState({
             name: app.name.ko,
