@@ -70,7 +70,7 @@ export default class Banner extends React.PureComponent {
     mounted = false
     intervalRotation = null
     currentIdx = 0
-    
+
 
     async componentDidMount() {
         this.mounted = true
@@ -78,7 +78,7 @@ export default class Banner extends React.PureComponent {
         const idx = parseInt(new Date().getTime()) % FakeDatabase.apps.length
         this.changeIndex(idx)
 
-        this.intervalRotation = setInterval(() => this.changeIndex(this.currentIdx + 1), 1000*10)
+        this.intervalRotation = setInterval(() => this.changeIndex(this.currentIdx + 1), 1000 * 10)
     }
 
     componentWillUnmount() {
@@ -121,21 +121,21 @@ export default class Banner extends React.PureComponent {
         return (
             <View style={[styles.container, containerStyle]}>
                 <View style={[styles.banner, bannerStyle]}>
-                    <TouchableWithoutFeedback style={{flex:1}} onPress={this.goStore}>
+                    <TouchableWithoutFeedback style={{ flex: 1 }} onPress={this.goStore}>
                         <View style={styles.bannerInside}>
                             <View style={{
-                                width: ICON_WIDTH, 
+                                width: ICON_WIDTH,
                                 height: '100%'
                             }}>
-                                <Image style={{width: ICON_WIDTH, height: ICON_HEIGHT}} source={icon} />
+                                <Image style={{ width: ICON_WIDTH, height: ICON_HEIGHT }} source={icon} />
                             </View>
                             <View style={{
-                                width: BANNER_WIDTH-ICON_WIDTH, 
+                                width: BANNER_WIDTH - ICON_WIDTH,
                                 paddingLeft: 10,
                                 paddingVertical: 10,
                             }}>
-                                <Text style={{fontSize: 16, marginBottom: 4}}>{name}</Text>
-                                <Text style={{fontSize: 11}}>{desc}</Text>
+                                <Text style={{ fontSize: 16, marginBottom: 4 }}>{name}</Text>
+                                <Text style={{ fontSize: 11 }}>{desc}</Text>
                             </View>
                         </View>
                     </TouchableWithoutFeedback>
@@ -159,12 +159,12 @@ const styles = StyleSheet.create({
         borderColor: 'black'
     },
     banner: {
-        flex:1, 
-        justifyContent: "center", 
+        flex: 1,
+        justifyContent: "center",
         alignItems: "center",
         width: BANNER_WIDTH,
         height: BANNER_HEIGHT,
-        
+
         backgroundColor: 'white'
     },
     bannerInside: {
