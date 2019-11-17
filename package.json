@@ -1,6 +1,6 @@
 {
   "name": "rn-yangga-app-ads",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/yangga/rn-yangga-app-ads.git"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "react": ">=16.9.0",
     "react-native": ">=0.60.0"
   }
