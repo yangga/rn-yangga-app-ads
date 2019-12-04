@@ -1,6 +1,6 @@
 {
   "name": "rn-yangga-app-ads",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2",
     "jest-react-native": "^18.0.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "react": ">=16.9.0",

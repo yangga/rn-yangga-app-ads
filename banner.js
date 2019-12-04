@@ -54,28 +54,34 @@ const FakeDatabase = {
     ]
 }
 
+let Database = { ...FakeDatabase }
+
 const BANNER_WIDTH = 300
     , BANNER_HEIGHT = 72
     , ICON_WIDTH = 72
     , ICON_HEIGHT = 72
 
 export default class Banner extends React.PureComponent {
-    state = {
-        name: 'null',
-        desc: 'desc',
-        store: 'https://play.google.com/store/apps/details?id=com.yangga.idresizer',
-        icon: null,
-    }
-
     mounted = false
     intervalRotation = null
     currentIdx = 0
 
+    state = {
+        ...getStateFromDB(0)
+    }
 
     async componentDidMount() {
         this.mounted = true
 
-        const idx = parseInt(new Date().getTime()) % FakeDatabase.apps.length
+        try {
+            const dbFromServer = await (await fetch('https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/meta/meta.json')).json()
+            Database = dbFromServer
+        }
+        catch (e) {
+            console.log('[yangga-app-ads] fetch err:', e)
+        }
+
+        const idx = parseInt(new Date().getTime()) % Database.apps.length
         this.changeIndex(idx)
 
         this.intervalRotation = setInterval(() => this.changeIndex(this.currentIdx + 1), 1000 * 10)
@@ -93,18 +99,10 @@ export default class Banner extends React.PureComponent {
     changeIndex = (idx) => {
         if (!this.mounted) return
 
-        const newIdx = idx % FakeDatabase.apps.length
-
-        const app = FakeDatabase.apps[newIdx]
-
+        const newIdx = idx % Database.apps.length
         this.currentIdx = newIdx
 
-        this.setState({
-            name: app.name.ko,
-            desc: app.desc.ko,
-            store: Platform.OS === 'android' ? app.store.aos : app.store.ios,
-            icon: app.icon,
-        })
+        this.setState(getStateFromDB(newIdx))
     }
 
     render() {
@@ -147,6 +145,17 @@ export default class Banner extends React.PureComponent {
 
     goStore = async () => {
         await Linking.openURL(this.state.store);
+    }
+}
+
+function getStateFromDB(idx) {
+    const app = Database.apps[idx % Database.apps.length]
+
+    return {
+        name: app.name.ko,
+        desc: app.desc.ko,
+        store: Platform.OS === 'android' ? app.store.aos : app.store.ios,
+        icon: app.icon,
     }
 }
 

@@ -15,7 +15,7 @@
         "ios": "https://apps.apple.com/app/id961606275"
       },
       "icon": {
-        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/idscanner.png",
+        "uri": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/idscanner.png",
         "size": 72
       }
     },
@@ -34,7 +34,7 @@
         "ios": "https://apps.apple.com/app/id1236553661"
       },
       "icon": {
-        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/dust.png",
+        "uri": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/dust.png",
         "size": 72
       }
     },
@@ -53,7 +53,26 @@
         "ios": "https://apps.apple.com/app/id1484022513"
       },
       "icon": {
-        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/mokick.png",
+        "uri": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/mokick.png",
+        "size": 72
+      }
+    },
+    {
+      "id": "newtube",
+      "name": {
+        "en": "Newtube",
+        "ko": "뉴투브"
+      },
+      "desc": {
+        "en": "The simplest listening news",
+        "ko": "세상돌아가는이야기 6 AM/PM"
+      },
+      "store": {
+        "aos": "https://play.google.com/store/apps/details?id=com.jaroro.newtube",
+        "ios": "https://apps.apple.com/app/id1489679477"
+      },
+      "icon": {
+        "uri": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/newtube.png",
         "size": 72
       }
     }
