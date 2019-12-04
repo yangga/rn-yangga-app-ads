@@ -86,6 +86,7 @@ export default class Banner extends React.PureComponent {
 
         if (this.intervalRotation) {
             clearInterval(this.intervalRotation)
+            this.intervalRotation = null
         }
     }
 

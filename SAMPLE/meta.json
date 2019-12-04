@@ -1,0 +1,61 @@
+{
+  "apps": [
+    {
+      "id": "idscanner",
+      "name": {
+        "en": "ID Scanner",
+        "ko": "신분증스캐너 뽄뽄"
+      },
+      "desc": {
+        "en": "IDScanner for scanned ID image",
+        "ko": "신분증 스캔이 필요할 땐 신분증스캐너 뽄뽄!"
+      },
+      "store": {
+        "aos": "https://play.google.com/store/apps/details?id=com.yangga.idresizer",
+        "ios": "https://apps.apple.com/app/id961606275"
+      },
+      "icon": {
+        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/idscanner.png",
+        "size": 72
+      }
+    },
+    {
+      "id": "dust",
+      "name": {
+        "en": "Dust Monitor",
+        "ko": "미세먼지 놉!"
+      },
+      "desc": {
+        "en": "Dust Monitor",
+        "ko": "해외사이트로 미세먼지 체크를"
+      },
+      "store": {
+        "aos": "https://play.google.com/store/apps/details?id=com.dusclient",
+        "ios": "https://apps.apple.com/app/id1236553661"
+      },
+      "icon": {
+        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/dust.png",
+        "size": 72
+      }
+    },
+    {
+      "id": "mokick",
+      "name": {
+        "en": "Mokick",
+        "ko": "모두의 킥보드 모킥!"
+      },
+      "desc": {
+        "en": "Searching e-scooters around us",
+        "ko": "주변 모든 킥보드를 한번에 찾자"
+      },
+      "store": {
+        "aos": "https://play.google.com/store/apps/details?id=com.yangga.mokick",
+        "ios": "https://apps.apple.com/app/id1484022513"
+      },
+      "icon": {
+        "url": "https://s3-ap-northeast-1.amazonaws.com/data.yangga-app-ads/icons/72x72/mokick.png",
+        "size": 72
+      }
+    }
+  ]
+}
