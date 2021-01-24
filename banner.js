@@ -20,22 +20,6 @@ const FakeDatabase = {
             icon: require('./icons/idscanner.png')
         },
         {
-            id: 'dust',
-            name: {
-                en: 'Dust Checker',
-                ko: '미세먼지 놉!',
-            },
-            desc: {
-                en: 'Dust Checker',
-                ko: '해외사이트로 미세먼지 체크를',
-            },
-            store: {
-                aos: 'https://play.google.com/store/apps/details?id=com.dusclient',
-                ios: 'https://apps.apple.com/app/id1236553661',
-            },
-            icon: require('./icons/dust.png')
-        },
-        {
             id: 'mokick',
             name: {
                 en: 'Mokick',
@@ -60,6 +44,8 @@ const BANNER_WIDTH = 300
     , BANNER_HEIGHT = 72
     , ICON_WIDTH = 72
     , ICON_HEIGHT = 72
+    , BTN_GO_WIDTH = 40
+    , BTN_GO_HEIGHT = 30
 
 export default class Banner extends React.PureComponent {
     mounted = false
@@ -120,24 +106,22 @@ export default class Banner extends React.PureComponent {
         return (
             <View style={[styles.container, containerStyle]}>
                 <View style={[styles.banner, bannerStyle]}>
-                    <TouchableWithoutFeedback style={{ flex: 1 }} onPress={this.goStore}>
-                        <View style={styles.bannerInside}>
-                            <View style={{
-                                width: ICON_WIDTH,
-                                height: '100%'
-                            }}>
-                                <Image style={{ width: ICON_WIDTH, height: ICON_HEIGHT }} source={icon} />
-                            </View>
-                            <View style={{
-                                width: BANNER_WIDTH - ICON_WIDTH,
-                                paddingLeft: 10,
-                                paddingVertical: 10,
-                            }}>
-                                <Text style={{ fontSize: 16, marginBottom: 4 }}>{name}</Text>
-                                <Text style={{ fontSize: 11 }}>{desc}</Text>
-                            </View>
+                    <View style={styles.bannerInside}>
+                        <View style={styles.iconContainer}>
+                            <Image style={{ width: '100%', height: '100%', resizeMode: 'contain' }} source={icon} />
                         </View>
-                    </TouchableWithoutFeedback>
+                        <View style={styles.descContainer}>
+                            <Text style={{ fontSize: 16, marginBottom: 4 }}>{name}</Text>
+                            <Text style={{ fontSize: 11, numberOfLines: 2 }}>{desc}</Text>
+                        </View>
+                        <View style={styles.btnGoContainer}>
+                        <TouchableWithoutFeedback style={{ flex: 1 }} onPress={this.goStore}>
+                            <View style={styles.btnGo}>
+                                <Text style={{ fontSize: 11, color: 'white' }}>이동</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                        </View>
+                    </View>
                 </View>
             </View>
         )
@@ -147,6 +131,8 @@ export default class Banner extends React.PureComponent {
         await Linking.openURL(this.state.store);
     }
 }
+
+
 
 function getStateFromDB(idx) {
     const app = Database.apps[idx % Database.apps.length]
@@ -179,7 +165,32 @@ const styles = StyleSheet.create({
     },
     bannerInside: {
         flex: 1,
-        flexDirection: 'row',
-        paddingLeft: 10
+        flexDirection: 'row'
+    },
+    iconContainer: {
+        flex: ICON_WIDTH,
+        height: '100%'
+    },
+    descContainer: {
+        flex: BANNER_WIDTH-ICON_WIDTH-BTN_GO_WIDTH,
+        height: '100%',
+        paddingLeft: 10,
+        paddingVertical: 10
+    },
+    btnGoContainer: {
+        flex: BTN_GO_WIDTH,
+        height: '100%',
+        justifyContent: "center",
+        alignItems: "center",
+        paddingLeft: 10,
+        paddingRight: 3
+    },
+    btnGo: {
+        width: '100%',
+        height: BTN_GO_HEIGHT,
+        backgroundColor: "gray",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 5
     }
 });
