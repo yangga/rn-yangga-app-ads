@@ -117,7 +117,7 @@ export default class Banner extends React.PureComponent {
                         <View style={styles.btnGoContainer}>
                         <TouchableWithoutFeedback style={{ flex: 1 }} onPress={this.goStore}>
                             <View style={styles.btnGo}>
-                                <Text style={{ fontSize: 11, color: 'white' }}>이동</Text>
+                                <Text style={{ fontSize: 11, color: 'white' }}>더보기</Text>
                             </View>
                         </TouchableWithoutFeedback>
                         </View>
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     btnGo: {
         width: '100%',
         height: BTN_GO_HEIGHT,
-        backgroundColor: "gray",
+        backgroundColor: "#2d3436",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 5
