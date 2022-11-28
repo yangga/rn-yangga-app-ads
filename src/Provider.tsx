@@ -17,10 +17,11 @@ export const Provider = (props: IYanggaAppAdsProviderProp) => {
       const res = await fetch(URI_META);
       const resJson = (await res.json()) as IDatabase;
       setDatabase(resJson);
-      setReady(true);
     } catch (error: unknown) {
       console.error(error);
       throw error;
+    } finally {
+      setReady(true);
     }
   }, []);
 
