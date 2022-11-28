@@ -11,11 +11,18 @@ npm install rn-yangga-app-ads
 ## Usage
 
 ```js
-import { multiply } from 'rn-yangga-app-ads';
+import * as YanggaAppAds from 'rn-yangga-app-ads';
 
+// App.tsx
 // ...
+   <YanggaAppAds.Provider>
+    ...
+   </YanggaAppAds.Provider>
 
-const result = await multiply(3, 7);
+// in your component
+// ...
+    <YanggaAppAds.Banner />
+
 ```
 
 ## Contributing

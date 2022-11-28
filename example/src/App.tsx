@@ -1,19 +1,45 @@
 import * as React from 'react';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import * as YanggaAppAds from '../../src';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'rn-yangga-app-ads';
+const SCREEN_WIDTH = Dimensions.get('screen').width;
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <YanggaAppAds.Provider>
+      <View style={styles.container}>
+        <View style={styles.section}>
+          <YanggaAppAds.Banner locale="ko" />
+        </View>
+        <View style={styles.section}>
+          <View
+            style={{
+              width: SCREEN_WIDTH * 0.8,
+            }}
+          >
+            <YanggaAppAds.Banner locale="en" />
+          </View>
+        </View>
+        <View style={styles.section}>
+          <View
+            style={{
+              width: SCREEN_WIDTH * 0.6,
+            }}
+          >
+            <YanggaAppAds.Banner locale="it" />
+          </View>
+        </View>
+        <View style={styles.section}>
+          <View
+            style={{
+              width: SCREEN_WIDTH * 0.4,
+            }}
+          >
+            <YanggaAppAds.Banner />
+          </View>
+        </View>
+      </View>
+    </YanggaAppAds.Provider>
   );
 }
 
@@ -23,9 +49,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  section: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    borderColor: '#222222',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
