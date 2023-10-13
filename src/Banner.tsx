@@ -7,6 +7,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
@@ -54,14 +55,8 @@ export const Banner = (props: IBannerProp) => {
 };
 
 interface IFontStyleGroup {
-  title: {
-    fontSize: number;
-    numberOfLines: number;
-  };
-  content: {
-    fontSize: number;
-    numberOfLines: number;
-  };
+  title: TextStyle;
+  content: TextStyle;
 }
 
 interface IBannerInnerProp {
@@ -123,11 +118,9 @@ const BannerInner = (props: IBannerInnerProp) => {
     () => ({
       title: {
         fontSize: 16 * uiRatio,
-        numberOfLines: 1,
       },
       content: {
         fontSize: 11 * uiRatio,
-        numberOfLines: 2,
       },
     }),
     [uiRatio]
@@ -158,8 +151,20 @@ const BannerInner = (props: IBannerInnerProp) => {
         <Image source={app.icon} style={styles.icon} resizeMode="contain" />
         <View style={styles.space} />
         <View style={styles.descContainer}>
-          <Text style={fontConfigGroup.title}>{name}</Text>
-          <Text style={fontConfigGroup.content}>{desc}</Text>
+          <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={fontConfigGroup.title}
+          >
+            {name}
+          </Text>
+          <Text
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={fontConfigGroup.content}
+          >
+            {desc}
+          </Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
