@@ -50,6 +50,7 @@ export const Banner = (props: IBannerProp) => {
       onLayout={onLayout}
     >
       <BannerInner locale={locale} style={style} />
+      <AdMark />
     </View>
   );
 };
@@ -171,6 +172,16 @@ const BannerInner = (props: IBannerInnerProp) => {
   );
 };
 
+const AdMark = () => {
+  const txt = useMemo(() => 'AD', []);
+
+  return (
+    <View style={styles.adMarkContainer}>
+      <Text style={styles.adMarkTxt}>{txt}</Text>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -198,5 +209,34 @@ const styles = StyleSheet.create({
   },
   descContainer: {
     flex: 30,
+  },
+  adMarkContainer: {
+    position: 'absolute',
+    right: 5,
+    bottom: 5,
+    borderColor: 'white',
+    borderWidth: 1,
+    backgroundColor: 'black',
+    padding: 2,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgb(50,50,50)',
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        shadowOffset: {
+          height: -1,
+          width: 0,
+        },
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  adMarkTxt: {
+    color: 'white',
+    fontSize: 10,
+    textShadowColor: 'black',
+    textShadowOffset: { width: 1, height: 1 },
   },
 });
